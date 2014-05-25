@@ -76,4 +76,17 @@ class TweetSetSuite extends FunSuite {
       assert(trends.head.user == "a" || trends.head.user == "b")
     }
   }
+  
+  test("descending: empty set set1") {
+    new TestSets {
+      val trends = set1.descendingByRetweet
+      assert(trends.isEmpty)
+      intercept[NoSuchElementException] {
+    	  trends.head
+      }
+      intercept[NoSuchElementException] {
+    	  trends.tail
+      }
+    }
+  }
 }
